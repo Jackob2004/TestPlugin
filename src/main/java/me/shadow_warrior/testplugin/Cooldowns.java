@@ -9,7 +9,7 @@ public class Cooldowns {
 
     private final HashMap<UUID, Long> cooldown3 = new HashMap<>();
 
-    
+
     public HashMap<UUID, Long> getCooldown() {
         return cooldown;
     }
