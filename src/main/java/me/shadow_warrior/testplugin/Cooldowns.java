@@ -6,7 +6,6 @@ import java.util.UUID;
 public class Cooldowns {
     private final HashMap<UUID, Long> cooldown = new HashMap<>();
     private final HashMap<UUID, Long> cooldown2 = new HashMap<>();
-
     private final HashMap<UUID, Long> cooldown3 = new HashMap<>();
 
 

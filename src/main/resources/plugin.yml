@@ -4,3 +4,6 @@ main: me.shadow_warrior.testplugin.TestPlugin
 api-version: 1.17
 authors: [ shadow_warrior_ ]
 description: Particles and stuff
+commands:
+  totem:
+    description: totem
