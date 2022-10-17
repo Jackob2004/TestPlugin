@@ -8,6 +8,7 @@ public final class TestPlugin extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         getServer().getPluginManager().registerEvents(new Testt(this),this);
+        getServer().getPluginManager().registerEvents(new GandalfStaff(),this);
         getCommand("totem").setExecutor(new TotemCommand());
 
     }

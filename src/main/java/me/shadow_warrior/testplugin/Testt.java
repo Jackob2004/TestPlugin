@@ -90,7 +90,7 @@ public class Testt extends Cooldowns implements Listener{
                             if (p.getPlayer().getInventory().contains(Material.STICK) && p.isSneaking() && p.hasPotionEffect(PotionEffectType.WATER_BREATHING)) {
                                 if(!getCooldown3().containsKey(p.getUniqueId()) || System.currentTimeMillis() - getCooldown3().get(p.getUniqueId()) >= 5000) {
                                     getCooldown3().put(p.getUniqueId(), System.currentTimeMillis());
-                                    p.setVelocity(p.getVelocity().clone().add(stand.getLocation().clone().toVector().subtract(p.getLocation().clone().toVector()).multiply(0.199).setY(0.5)));
+                                    p.setVelocity(p.getVelocity().clone().add(stand.getLocation().clone().toVector().subtract(p.getLocation().clone().toVector()).multiply(0.199).setY(0.6)));
                                 }p.sendMessage("Musisz poczekac: " + ((5000 - (System.currentTimeMillis() - getCooldown3().get(p.getUniqueId())))/1000) + " aby uzyc swojej umiejetnosci ponownie");
                             }
                         }
