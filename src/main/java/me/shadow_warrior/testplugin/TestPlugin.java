@@ -9,7 +9,8 @@ public final class TestPlugin extends JavaPlugin {
         // Plugin startup logic
         getServer().getPluginManager().registerEvents(new Testt(this),this);
         getServer().getPluginManager().registerEvents(new GandalfStaff(),this);
-        getCommand("totem").setExecutor(new TotemCommand());
+        getServer().getPluginManager().registerEvents(new BuffaloHorn(),this);
+        getCommand("tot435236").setExecutor(new TotemCommand());
 
     }
 

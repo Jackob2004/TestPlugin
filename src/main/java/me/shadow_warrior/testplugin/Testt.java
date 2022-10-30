@@ -28,22 +28,22 @@ public class Testt extends Cooldowns implements Listener{
     public void onPlayerClick(PlayerInteractEvent e){
         Player ppp = e.getPlayer();
         if(e.getPlayer().getItemInHand().getItemMeta() == null || e.getPlayer().getItemInHand().getItemMeta().getDisplayName() == null || (e.getPlayer().getItemInHand() == null)) return;
-        if(e.getPlayer().getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GREEN + "" + ChatColor.BOLD + "Totem") && e.getAction().equals(Action.RIGHT_CLICK_AIR)){
-            if(!getCooldown().containsKey(ppp.getUniqueId()) || System.currentTimeMillis() - getCooldown().get(ppp.getUniqueId()) >= 10000) {
+        if(e.getPlayer().getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GREEN + "" + ChatColor.BOLD + "Kostur Szamana") && e.getAction().equals(Action.RIGHT_CLICK_AIR)){
+            if(!getCooldown().containsKey(ppp.getUniqueId()) || System.currentTimeMillis() - getCooldown().get(ppp.getUniqueId()) >= 50000) {
                 getCooldown().put(ppp.getUniqueId(), System.currentTimeMillis());
                 ArmorStand armorStand = (ArmorStand) e.getPlayer().getWorld().spawnEntity(e.getPlayer().getLocation(), EntityType.ARMOR_STAND);
                 Vector vector = e.getPlayer().getLocation().getDirection();
                 vector = vector.multiply(1.2);
                 totem(armorStand, vector, Effect.HEART, Sound.VILLAGER_YES, "TOTEM UZDROWIENIA", Material.JUKEBOX, Material.POTION, false, ChatColor.RED, ChatColor.BOLD,false);
-            }else   ppp.sendMessage("Musisz poczekac: " + ((10000 - (System.currentTimeMillis() - getCooldown().get(ppp.getUniqueId())))/1000) + " sekund, aby uzyc swojej umiejetnosci ponownie.");
-        } else if (e.getPlayer().getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GREEN + "" + ChatColor.BOLD + "Totem") && e.getAction().equals(Action.LEFT_CLICK_AIR)) {
-            if(!getCooldown2().containsKey(ppp.getUniqueId()) || System.currentTimeMillis() - getCooldown2().get(ppp.getUniqueId()) >= 10000) {
+            }else   ppp.sendMessage("Musisz poczekac: " + ((50000 - (System.currentTimeMillis() - getCooldown().get(ppp.getUniqueId())))/1000) + " sekund, aby uzyc swojej umiejetnosci ponownie.");
+        } else if (e.getPlayer().getItemInHand().getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.GREEN + "" + ChatColor.BOLD + "Kostur Szamana") && e.getAction().equals(Action.LEFT_CLICK_AIR)) {
+            if(!getCooldown2().containsKey(ppp.getUniqueId()) || System.currentTimeMillis() - getCooldown2().get(ppp.getUniqueId()) >= 50000) {
                 getCooldown2().put(ppp.getUniqueId(), System.currentTimeMillis());
                 ArmorStand gravOrb = (ArmorStand) e.getPlayer().getWorld().spawnEntity(e.getPlayer().getLocation(), EntityType.ARMOR_STAND);
                 Vector vector = e.getPlayer().getLocation().getDirection();
                 vector = vector.multiply(1.2);
                 totem(gravOrb, vector, Effect.LARGE_SMOKE, Sound.ENDERMAN_SCREAM, "TOTEM ZGUBIENIA", Material.COAL_BLOCK, Material.OBSIDIAN, true, ChatColor.BLACK, ChatColor.BOLD,true);
-            } else   ppp.sendMessage("Musisz poczekac: " + ((10000 - (System.currentTimeMillis() - getCooldown2().get(ppp.getUniqueId())))/1000) + " sekund, aby uzyc swojej umiejetnosci ponownie.");
+            } else   ppp.sendMessage("Musisz poczekac: " + ((50000 - (System.currentTimeMillis() - getCooldown2().get(ppp.getUniqueId())))/1000) + " sekund, aby uzyc swojej umiejetnosci ponownie.");
         }
     }
 
@@ -83,6 +83,9 @@ public class Testt extends Cooldowns implements Listener{
                             p.playSound(stand.getLocation(), sound, 0.5F, 1);
                             if(p.hasPotionEffect(PotionEffectType.WATER_BREATHING) && !totem) {
                                 p.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 30, 1, true));
+                                p.removePotionEffect(PotionEffectType.BLINDNESS);
+                                p.removePotionEffect(PotionEffectType.POISON);
+                                p.removePotionEffect(PotionEffectType.SLOW);
                             } else if (p.hasPotionEffect(PotionEffectType.NIGHT_VISION) && totem) {
                                 p.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 30, 1, true));
                                 ent.setVelocity(ent.getVelocity().clone().add(stand.getLocation().clone().toVector().subtract(ent.getLocation().clone().toVector()).multiply(0.005)));
